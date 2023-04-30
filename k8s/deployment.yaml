@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wllone
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wllone
+  template:
+    metadata:
+      labels:
+        app: wllone
+    spec:
+      containers:
+      - image: okteto.dev/wllone:latest
+        name: wllone
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: Site
+          value: "https://github.com/happyevero/Html/raw/main/S-html.zip"
+        - name: ParameterSSENCYPT
+          value: "chacha20-ietf-poly1305"
+        - name: AUUID
+          value: "fbaf36d1-f40b-4d48-9a1c-50fbefd516ad"
